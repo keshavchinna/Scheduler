@@ -1,12 +1,52 @@
-apply plugin: 'java'
+buildscript {
+    repositories {
+        maven { url "https://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE")
+    }
+}
 
-sourceCompatibility = 1.5
-version = '1.0'
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+war {
+    baseName = 'scheduler'
+}
+jar {
+    baseName = 'scheduler'
+}
 
 repositories {
+    mavenLocal()
     mavenCentral()
+    maven { url "https://repo.spring.io/libs-release" }
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile("org.springframework.boot:spring-boot-starter-parent:1.1.9.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("com.google.code.gson:gson:1.7.1")
+    compile("com.ning:async-http-client:1.8.14")
+    compile("com.google.code.geocoder-java:geocoder-java:0.16")
+    compile("commons-codec:commons-codec:1.2")
+    compile("org.springframework.security:spring-security-crypto:3.1.0.RELEASE")
+    compile("com.amazonaws:aws-java-sdk:1.9.8")
+    compile("joda-time:joda-time:2.7")
+    compile("log4j:log4j:1.2.16")
+    compile("org.springframework:spring-context-support:3.1.2.RELEASE")
+    compile("org.springframework:spring-tx:3.1.2.RELEASE")
+    compile("org.quartz-scheduler:quartz:1.8.6")
+    compile("org.apache.commons:commons-collections4:4.0")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
 }
