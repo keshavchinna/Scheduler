@@ -20,7 +20,7 @@ public class Notification {
   private Date startDate;
   private Date endDate;
   private String trigger;
-  private boolean status;
+  private boolean deliveryStatus;
 
   public String getId() {
     return id;
@@ -94,12 +94,12 @@ public class Notification {
     this.trigger = trigger;
   }
 
-  public boolean getStatus() {
-    return status;
+  public boolean getDeliveryStatus() {
+    return deliveryStatus;
   }
 
-  public void setStatus(boolean status) {
-    this.status = status;
+  public void setDeliveryStatus(boolean deliveryStatus) {
+    this.deliveryStatus = deliveryStatus;
   }
 
   @Override
@@ -114,7 +114,7 @@ public class Notification {
         ", startDate='" + startDate + '\'' +
         ", endDate='" + endDate + '\'' +
         ", trigger='" + trigger + '\'' +
-        ", status='" + status + '\'' +
+        ", deliveryStatus='" + deliveryStatus + '\'' +
         '}';
   }
 }

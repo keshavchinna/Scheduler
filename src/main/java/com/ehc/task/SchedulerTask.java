@@ -53,7 +53,7 @@ public class SchedulerTask {
       notification.setMessage(deal.getDetails());
       notification.setStartDate(deal.getStartDate());
       notification.setTrigger(notificationChannel);
-      notification.setStatus(false);
+      notification.setDeliveryStatus(false);
       notification.setEndDate(deal.getEndDate());
       notificationRepository.save(notification);
     }
