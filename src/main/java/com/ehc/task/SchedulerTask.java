@@ -86,8 +86,6 @@ public class SchedulerTask {
       List<Customer> customerList = mongoTemplate.find(query, Customer.class);
       for (Customer customer : customerList) {
         Date currentTime = new Date();
-        Date customerDOB = null;
-        Date nextDOB = null;
         String date = customer.getDateOfBirth();
         String dateArray[] = customer.getDateOfBirth().split("/");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
